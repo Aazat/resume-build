@@ -58,16 +58,10 @@ def home_page():
 
 		html_rendered = render_template("flask_template.html", work_experience = list_c)
 		# Using flask-weasyprint to generate pdf ... facing foramtting issues here.
-		# return render_pdf(HTML(string=html_rendered))
+		return render_pdf(HTML(string=html_rendered))
 
 		
-		with open('exported_template.html', 'w') as f:
-			f.write(html_rendered)
-		command = "node pupeteer.js"
-		result = subprocess.run(command, shell=True, capture_output=True, text=True)
-		subprocess.Popen(["node", "pupeteer.js"])
-		return html_rendered
-		# return html_rendered
+		
 	return render_template("front_end.html")
 
 @app.route("/resume")
