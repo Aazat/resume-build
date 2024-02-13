@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<title> this is title </title>
+
+	<link rel="stylesheet" href="static/test.css">
+	
+	<body> 
+		<h2> Shaikh Aazar</h2>
+		
+		<div class="personal-info"> 
+			shaikhaazar11@gmail.com | 626384848177 | <a href="" >LinkedIn </a>| <a href=""> GitHub </a>
+		</div>
+		
+		<h3>  Work Experience </h3>
+		<hr>
+		<div id ="parent">
+			{% for we in work_experience %}
+				<div class="inner-block">
+					<div class="top-inner-block">
+
+						<div class="inner-title">
+							<div class="title"> {{we.company_name}} </div>
+						</div>
+						<div class="period bold">
+							{{we.place}}
+						</div>
+
+					</div>
+					<div class="top-inner-block">
+						<div class="inner-title">
+							<div class="job-description">{{we.designation}}</div>	
+						</div>
+						
+						<div class="period">
+							{{we.period}}
+						</div>
+
+					</div>
+					
+					<div class="text-content">
+						<ul>
+							{% for desc in we.work_description %}
+							<!-- <li> Working with <b>Frappe/ERPNEXT</b> framework to build reald world ERP applications for enterprises to solve business problems. </li>
+
+							<li> Domain Expertise: Learned about business processes and workflows to facilitate framework customization as per specific client requirements.</li>
+
+							<li> Involved in Server Configuration and Management for organization.</li> -->
+							<li> {{desc}} </li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+			{% endfor %}
+			
+			<div class="inner-block">
+				<div class="top-inner-block">
+
+					<div class="inner-title">
+						<div class="title"> Aplus Topper </div>
+					</div>
+					<div class="period bold">
+						Remote
+					</div>
+				</div>
+
+				<div class="top-inner-block">
+
+					<div class="inner-title">
+						<div class="job-description">Python Developer intern</div>
+					</div>
+					<div class="period">
+						Apr 2023 - Dec 2023
+					</div>
+				</div>
+
+				
+				<div class="text-content">
+					<ul>
+						<li>Designed and developed solutions with Web Application using Python - Django Framework.</li>
+
+						<li>Developed Code to complete tasks in various domains like Mathematics, Web Scraping, Front-end </li>
+
+						<li> Developed Code for Automating Trading Strategies and Numeircal Analysis Screeners for Web Based Trading Platform PaisaAlgo. </li>						
+					</ul>
+
+				</div>			
+			</div>
+			
+			<div class="inner-block">
+				<div class="top-inner-block">
+
+					<div class="inner-title">
+						<div class="title"> Feynn Labs </div>
+					</div>
+					<div class="period bold">
+						Remote
+					</div>
+				</div>
+				
+				<div class="top-inner-block">
+
+					<div class="inner-title">
+						<div class="job-description">Machine Learning intern</div>
+					</div>
+					<div class="period">
+						Apr 2023 - Dec 2023
+					</div>
+				</div>
+				<div class="text-content">
+					<ul>
+						<li>Designed and developed solutions with Web Application using Python - Django Framework.</li>
+
+						<li>Developed Code to complete tasks in various domains like Mathematics, Web Scraping, Front-end </li>
+
+						<li> Developed Code for Automating Trading Strategies and Numeircal Analysis Screeners for Web Based Trading Platform PaisaAlgo. </li>						
+					</ul>
+				</div>
+			</div>
+		</div>
+</body>
+</html>

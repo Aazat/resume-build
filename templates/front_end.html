@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Experience Form</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='front_end.css') }}">
+</head>
+<body>
+    <h1>Work Experience Form</h1>
+    <form id="work_experience_form" method="POST" target="_blank">
+        <div id="companies">
+            <div class="company">
+                <h2>Company 1</h2>
+                <label for="company_name_1">Company Name:</label>
+                <input type="text" id="company_name_1" name="company_name_1" value="Company 1" required><br>
+                <label for="place_1">Place:</label>
+                <input type="text" id="place_1" name="place_1" value="Place 1" required><br>
+                <label for="designation_1">Designation:</label>
+                <input type="text" id="designation_1" name="designation_1" value="Designation 1" required><br>
+                <label for="period_1">Period:</label>
+                <input type="text" id="period_1" name="period_1" value="Period 1" required><br>
+                <label for="work_description_1">Work Descriptions:</label><br>
+                <textarea id="work_description_1" name="work_description_1" rows="4" cols="50" required>Work Description 1</textarea>
+            </div>
+        </div>
+        <button type="button" id="add_company">Add Another Company</button>
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        document.getElementById('add_company').addEventListener('click', function() {
+            const companyCount = document.querySelectorAll('.company').length + 1;
+            const newCompany = document.createElement('div');
+            newCompany.classList.add('company');
+            newCompany.innerHTML = `
+                <h2>Company ${companyCount}</h2>
+                <label for="company_name_${companyCount}">Company Name:</label>
+                <input type="text" id="company_name_${companyCount}" name="company_name_${companyCount}" value="Company ${companyCount}" required><br>
+                <label for="place_${companyCount}">Place:</label>
+                <input type="text" id="place_${companyCount}" name="place_${companyCount}" value="Place ${companyCount}" required><br>
+                <label for="designation_${companyCount}">Designation:</label>
+                <input type="text" id="designation_${companyCount}" name="designation_${companyCount}" value="Designation ${companyCount}" required><br>
+                <label for="period_${companyCount}">Period:</label>
+                <input type="text" id="period_${companyCount}" name="period_${companyCount}" value="Period ${companyCount}" required><br>
+                <label for="work_description_${companyCount}">Work Descriptions:</label><br>
+                <textarea id="work_description_${companyCount}" name="work_description_${companyCount}" rows="4" cols="50" required>Work Description ${companyCount}</textarea>
+            `;
+            document.getElementById('companies').appendChild(newCompany);
+        });
+
+        // document.getElementById('work_experience_form').addEventListener('submit', function(event) {
+        //     event.preventDefault();
+        //     const formData = new FormData(this);
+        //     const companies = [];
+            
+        //     let companyIndex = 1;
+        //     let currentCompany = {};
+
+        //     for (const [key, value] of formData.entries()) {
+        //         const fieldName = key.split('_')[0];
+
+        //         if (fieldName === 'company') {
+        //             if (Object.keys(currentCompany).length !== 0) {
+        //                 companies.push(currentCompany);
+        //             }
+        //             currentCompany = {};
+        //         }
+
+        //         const index = key.split('_')[1];
+        //         // currentCompany[fieldName + '_' + index] = value;
+        //         currentCompany[fieldName] = value;
+        //     }
+
+        //     if (Object.keys(currentCompany).length !== 0) {
+        //         companies.push(currentCompany);
+        //     }
+
+        //     // Now 'companies' array contains data for each company
+        //     console.log(companies);
+
+        //     // Convert 'companies' array to JSON and send it to the server
+        //     const jsonData = JSON.stringify(companies);
+        //     console.log(jsonData);
+
+        //     // Send JSON data to the server using AJAX
+        //     const xhr = new XMLHttpRequest();
+        //     xhr.open('POST', "{{ url_for('home_page')}}");
+        //     xhr.setRequestHeader('Content-Type', 'application/json');
+        //     xhr.onload = function() {
+        //         if (xhr.status === 200) {
+        //             // Handle success response from the server
+        //             console.log('Data sent successfully');
+        //         } else {
+        //             // Handle error response from the server
+        //             console.error('Failed to send data:', xhr.statusText);
+        //         }
+        //     };
+        //     xhr.send(jsonData);
+        // });
+    </script>
+</body>
+</html>
