@@ -1,7 +1,7 @@
 from flask import Flask
 from flask import render_template
 import json
-from flask import request
+from flask import request,url_for
 from pprint import pprint
 from flask_weasyprint import HTML, render_pdf,CSS
 from pyppeteer import launch
@@ -57,11 +57,17 @@ def home_page():
 		# print(*list_c,sep="\n---\n")
 
 		html_rendered = render_template("flask_template.html", work_experience = list_c)
+		stylesheet = CSS(url_for('static', filename='weasy.css'))
 		# Using flask-weasyprint to generate pdf ... facing foramtting issues here.
-		return render_pdf(HTML(string=html_rendered))
+		return render_pdf(HTML(string=html_rendered), stylesheets=[stylesheet])
 
 		
-		
+		# with open('exported_template.html', 'w') as f:
+		# 	f.write(html_rendered)
+		# command = "node pupeteer.js"
+		# result = subprocess.run(command, shell=True, capture_output=True, text=True)
+		# subprocess.Popen(["node", "pupeteer.js"])
+		# return html_rendered		
 	return render_template("front_end.html")
 
 @app.route("/resume")
@@ -69,34 +75,39 @@ def hello_flask():
 	print("this is printed from resume to the console...")
 	with open("data.json", "r", encoding="utf8") as data:
 		context = json.load(data)
-	# context = {
-	# 	"work_experience" : [
-	# 			{
-	# 			"company_name":"Yog Enterprise Solutions",
-	# 			"place": "Indore, Madhya Pradesh",
-	# 			"designation":"Python Developer Intern",
-	# 			"period":"Jan 2024 - ",
-	# 			"work_description" : [
-	# 				"Working with Frappe/ERPNEXT framework to build reald world ERP applications for enterprises to solve business problems",
-	# 				"Domain Expertise: Learned about business processes and workflows to facilitate framework customization as per specific client requirements.",
-	# 				"Involved in Server Configuration and Management for organization.",
-	# 				"Added a job description here."
-	# 				]
-	# 			},
-	# 			{
-	# 			"company_name":"Company 2",
-	# 			"place": "place 2",
-	# 			"designation":"designation 2",
-	# 			"period":"period 2",
-	# 			"work_description" : [
-	# 				"point 1",
-	# 				"point 2",
-	# 				"point 3",
-	# 				"point 4"
-	# 				]
-	# 			}
 
-	# 		]
-	# 	}
-	 
 	return render_template("flask_template.html",**context)
+
+
+
+# context = {
+# 	"work_experience" : [
+# 			{
+# 			"company_name":"Yog Enterprise Solutions",
+# 			"place": "Indore, Madhya Pradesh",
+# 			"designation":"Python Developer Intern",
+# 			"period":"Jan 2024 - ",
+# 			"work_description" : [
+# 				"Working with Frappe/ERPNEXT framework to build reald world ERP applications for enterprises to solve business problems",
+# 				"Domain Expertise: Learned about business processes and workflows to facilitate framework customization as per specific client requirements.",
+# 				"Involved in Server Configuration and Management for organization.",
+# 				"Added a job description here."
+# 				]
+# 			},
+# 			{
+# 			"company_name":"Company 2",
+# 			"place": "place 2",
+# 			"designation":"designation 2",
+# 			"period":"period 2",
+# 			"work_description" : [
+# 				"point 1",
+# 				"point 2",
+# 				"point 3",
+# 				"point 4"
+# 				]
+# 			}
+
+# 		]
+# 	}
+	 
+	
