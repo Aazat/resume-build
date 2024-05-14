@@ -77,37 +77,5 @@ def hello_flask():
 		context = json.load(data)
 
 	return render_template("flask_template.html",**context)
-
-
-
-# context = {
-# 	"work_experience" : [
-# 			{
-# 			"company_name":"Yog Enterprise Solutions",
-# 			"place": "Indore, Madhya Pradesh",
-# 			"designation":"Python Developer Intern",
-# 			"period":"Jan 2024 - ",
-# 			"work_description" : [
-# 				"Working with Frappe/ERPNEXT framework to build reald world ERP applications for enterprises to solve business problems",
-# 				"Domain Expertise: Learned about business processes and workflows to facilitate framework customization as per specific client requirements.",
-# 				"Involved in Server Configuration and Management for organization.",
-# 				"Added a job description here."
-# 				]
-# 			},
-# 			{
-# 			"company_name":"Company 2",
-# 			"place": "place 2",
-# 			"designation":"designation 2",
-# 			"period":"period 2",
-# 			"work_description" : [
-# 				"point 1",
-# 				"point 2",
-# 				"point 3",
-# 				"point 4"
-# 				]
-# 			}
-
-# 		]
-# 	}
 	 
 	
